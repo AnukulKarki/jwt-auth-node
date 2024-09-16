@@ -9,6 +9,7 @@ export default (req, res, next)=>{
         if(token){
             const decoded = jwt.verify(token,process.env.JWT_SECRET_KEY );
             console.log("Decoded"+decoded.id, decoded.email);
+            //sending the data to the controller by attaching it to the request object
             req.decoded = decoded;
             if(decoded){
                 next();
